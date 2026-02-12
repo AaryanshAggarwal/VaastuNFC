@@ -10,10 +10,11 @@
     
     <style>
         :root {
-            --primary-gold: #d4af37;
-            --deep-overlay: rgba(10, 20, 40, 0.9); 
-            --glass: rgba(255, 255, 255, 0.05);
-            --text-white: #ffffff;
+            --champagne-gold: #e5d1a0;
+            --crimson-maroon: #5a0b0d;
+            --deep-overlay: rgba(45, 4, 5, 0.92); 
+            --glass: rgba(255, 255, 255, 0.08);
+            --text-light: #f4e8d1;
         }
 
         * { box-sizing: border-box; }
@@ -26,12 +27,12 @@
             justify-content: center;
             align-items: center;
             min-height: 100vh;
-            color: var(--text-white);
+            color: var(--text-light);
             overflow-x: hidden;
-            background-color: #000;
+            background-color: #1a0203;
         }
 
-        /* Fixed Background Image */
+        /* Portrait Background */
         .page-background {
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100%;
@@ -41,10 +42,11 @@
             z-index: -2;
         }
 
+        /* Red-tined Vignette to match the provided contrast */
         .page-overlay {
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100%;
-            background: radial-gradient(circle, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0.85) 100%);
+            background: radial-gradient(circle, rgba(90, 11, 13, 0.2) 0%, rgba(26, 2, 3, 0.95) 100%);
             z-index: -1;
         }
 
@@ -52,12 +54,12 @@
             width: 100%;
             max-width: 400px;
             background: var(--deep-overlay);
-            backdrop-filter: blur(15px);
-            -webkit-backdrop-filter: blur(15px);
-            border: 1px solid rgba(212, 175, 55, 0.4);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid var(--champagne-gold);
             border-radius: 40px;
             text-align: center;
-            padding-bottom: 30px;
+            padding-bottom: 35px;
             margin: 20px;
             box-shadow: 0 40px 80px rgba(0,0,0,0.9);
             opacity: 0;
@@ -65,34 +67,41 @@
             transition: all 0.8s ease-out;
         }
 
-        .header-spacer {
-            height: 100px;
-            background: linear-gradient(180deg, rgba(212, 175, 55, 0.15), transparent);
+        .header-accent {
+            height: 110px;
+            background: linear-gradient(180deg, rgba(229, 209, 160, 0.15), transparent);
             border-radius: 40px 40px 0 0;
         }
 
+        /* New Logo Area with "Since 1997" Image */
         .logo-area {
-            width: 120px;
-            height: 120px;
+            width: 130px;
+            height: 130px;
             background: #fff;
             border-radius: 50%;
-            margin: -60px auto 0;
+            margin: -65px auto 0;
             display: flex;
             align-items: center;
             justify-content: center;
-            border: 4px solid var(--primary-gold);
+            border: 4px solid var(--champagne-gold);
             box-shadow: 0 15px 30px rgba(0,0,0,0.6);
             position: relative;
             z-index: 5;
+            overflow: hidden;
         }
 
-        .logo-area img { width: 85%; height: auto; }
+        .logo-area img { 
+            width: 100%; 
+            height: 100%; 
+            object-fit: cover; 
+        }
 
         h1 { 
             font-family: 'Cinzel', serif; 
-            font-size: 1.4rem; 
-            margin: 20px 15px 5px; 
-            color: var(--primary-gold);
+            font-size: 1.45rem; 
+            margin: 25px 15px 5px; 
+            color: var(--champagne-gold);
+            text-shadow: 0 2px 10px rgba(0,0,0,0.5);
         }
 
         .subtitle { 
@@ -100,71 +109,77 @@
             letter-spacing: 2px; 
             text-transform: uppercase; 
             margin-bottom: 25px;
-            color: #ccc;
+            color: #d1b48c;
+            font-weight: 300;
         }
 
+        /* Save Contact - Champagne Gold Style */
         .btn-save {
             display: inline-block;
-            background: var(--primary-gold);
-            color: #000;
-            padding: 14px 45px;
+            background: var(--champagne-gold);
+            color: #2d0405;
+            padding: 15px 50px;
             border-radius: 50px;
             text-decoration: none;
             font-weight: 700;
             text-transform: uppercase;
             letter-spacing: 1px;
-            transition: 0.3s;
+            transition: all 0.3s;
             margin-bottom: 25px;
+            box-shadow: 0 8px 20px rgba(229, 209, 160, 0.2);
+        }
+
+        .btn-save:hover {
+            background: #fff;
+            transform: scale(1.05);
         }
 
         .links-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 12px;
-            padding: 0 20px;
+            gap: 15px;
+            padding: 0 25px;
         }
 
         .link-item {
             background: var(--glass);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            padding: 18px 5px;
-            border-radius: 18px;
+            border: 1px solid rgba(229, 209, 160, 0.15);
+            padding: 20px 10px;
+            border-radius: 20px;
             text-decoration: none;
             color: #fff;
             display: flex;
             flex-direction: column;
             align-items: center;
-            transition: 0.3s;
+            transition: all 0.3s ease;
         }
 
         .link-item:hover {
-            background: rgba(212, 175, 55, 0.15);
-            border-color: var(--primary-gold);
+            background: rgba(229, 209, 160, 0.1);
+            border-color: var(--champagne-gold);
+            transform: translateY(-5px);
         }
 
-        .link-item i { font-size: 1.6rem; margin-bottom: 8px; color: var(--primary-gold); }
-        .link-item span { font-size: 0.8rem; }
+        .link-item i { font-size: 1.8rem; margin-bottom: 10px; color: var(--champagne-gold); }
+        .link-item span { font-size: 0.85rem; font-weight: 400; }
 
-        /* Specific Brand Colors */
+        /* Icon Brands Colors */
         .fa-youtube { color: #ff0000 !important; }
         .fa-instagram { color: #e1306c !important; }
-        .fa-facebook { color: #1877f2 !important; }
-        .fa-location-dot { color: #4285F4 !important; }
         .fa-google-drive { color: #34a853 !important; }
 
-        footer { font-size: 0.65rem; opacity: 0.4; margin-top: 25px; }
+        footer { font-size: 0.7rem; opacity: 0.5; margin-top: 30px; letter-spacing: 1px; color: var(--champagne-gold); }
 
         .toast {
             position: fixed;
             bottom: 30px;
-            background: var(--primary-gold);
-            color: #000;
-            padding: 10px 25px;
+            background: var(--champagne-gold);
+            color: #2d0405;
+            padding: 12px 30px;
             border-radius: 30px;
             font-weight: bold;
             display: none;
             z-index: 1000;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.4);
         }
     </style>
 </head>
@@ -174,9 +189,10 @@
     <div class="page-overlay"></div>
 
     <div class="card-container" id="mainCard">
-        <div class="header-spacer"></div>
+        <div class="header-accent"></div>
+        
         <div class="logo-area">
-            <img src="https://www.vaastumahajeevan.com/wp-content/uploads/2021/05/cropped-Vastu-Mahajeevan-Logo-1-1.png" alt="Logo">
+            <img src="logo.png" alt="Vaastu Logo">
         </div>
         
         <h1>Dr. Gaurav Sri Aggarwal</h1>
@@ -202,11 +218,11 @@
             <a href="https://www.youtube.com/@VaastuMahajeevan" class="link-item" target="_blank">
                 <i class="fa-brands fa-youtube"></i><span>YouTube</span>
             </a>
-            <a href="INSERT_DRIVE_URL_HERE" class="link-item" target="_blank">
+            <a href="https://drive.google.com/drive/folders/1-BTfVWrc2YpeRjamzBlfkV5q8l7g1psk?usp=share_link" class="link-item" target="_blank">
                 <i class="fa-brands fa-google-drive"></i><span>Google Drive</span>
             </a>
-            <a href="https://www.google.com/maps/search/?api=1&query=Vaastu+MahaJeevan+B13+Swasthya+Vihar+Delhi" class="link-item" target="_blank">
-                <i class="fa-solid fa-location-dot"></i><span>Location</span>
+            <a href="http://googleusercontent.com/maps.google.com/final" class="link-item" target="_blank">
+                <i class="fa-solid fa-location-dot" style="color: #4285F4 !important;"></i><span>Location</span>
             </a>
             <a href="mailto:vaastumahajeevan@gmail.com" class="link-item" onclick="handleEmail(event)">
                 <i class="fa-solid fa-envelope"></i><span>Email Us</span>
@@ -219,7 +235,7 @@
         <footer>© 2026 Vaastu Mahajeevan</footer>
     </div>
 
-    <div id="toast" class="toast">Number Copied!</div>
+    <div id="toast" class="toast">Copied!</div>
 
     <script>
         window.onload = () => {
@@ -232,7 +248,7 @@
             const toast = document.getElementById('toast');
             toast.innerText = msg;
             toast.style.display = 'block';
-            setTimeout(() => { toast.style.display = 'none'; }, 2500);
+            setTimeout(() => { toast.style.display = 'none'; }, 2000);
         }
 
         function handleCall(e) {
