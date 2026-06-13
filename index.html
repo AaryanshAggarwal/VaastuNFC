@@ -74,7 +74,7 @@
 
             top: 0; left: 0; width: 100%; height: 100%;
 
-            background-image: url('http://googleusercontent.com/image_generation_content/0'); 
+            background-image: url('background.jpg'); 
 
             background-size: cover;
 
@@ -408,43 +408,43 @@
 
         <div class="links-grid">
 
-            <a href="https://gauravsriaggarwal.com" class="link-item" target="_blank">
+            <a href="https://gauravsriaggarwal.com" class="link-item" target="_blank" rel="noopener noreferrer">
 
                 <i class="fa-solid fa-globe"></i><span>Website</span>
 
             </a>
 
-            <a href="https://www.instagram.com/vaastumahajeevan?igsh=Zng5eWYzdzBidHZm" class="link-item" target="_blank">
+            <a href="https://www.instagram.com/vaastumahajeevan?igsh=Zng5eWYzdzBidHZm" class="link-item" target="_blank" rel="noopener noreferrer">
 
                 <i class="fa-brands fa-instagram"></i><span>Instagram</span>
 
             </a>
 
-            <a href="https://www.facebook.com/vaastumahajeevan" class="link-item" target="_blank">
+            <a href="https://www.facebook.com/vaastumahajeevan" class="link-item" target="_blank" rel="noopener noreferrer">
 
                 <i class="fa-brands fa-facebook"></i><span>Facebook</span>
 
             </a>
 
-            <a href="https://twitter.com/vaastumahajeeva" class="link-item" target="_blank">
+            <a href="https://twitter.com/vaastumahajeeva" class="link-item" target="_blank" rel="noopener noreferrer">
 
                 <i class="fa-brands fa-x-twitter"></i><span>Twitter</span>
 
             </a>
 
-            <a href="https://www.youtube.com/@VaastuMahajeevan" class="link-item" target="_blank">
+            <a href="https://www.youtube.com/@VaastuMahajeevan" class="link-item" target="_blank" rel="noopener noreferrer">
 
                 <i class="fa-brands fa-youtube"></i><span>YouTube</span>
 
             </a>
 
-            <a href="https://drive.google.com/drive/folders/1-BTfVWrc2YpeRjamzBlfkV5q8l7g1psk?usp=share_link" class="link-item" target="_blank">
+            <a href="https://drive.google.com/drive/folders/1-BTfVWrc2YpeRjamzBlfkV5q8l7g1psk?usp=share_link" class="link-item" target="_blank" rel="noopener noreferrer">
 
                 <i class="fa-brands fa-google-drive"></i><span>Google Drive</span>
 
             </a>
 
-            <a href="http://googleusercontent.com/maps.google.com/final" class="link-item" target="_blank">
+            <a href="https://www.google.com/maps/search/?api=1&query=B+13+Block+B+Swasthya+Vihar+New+Delhi+110092" class="link-item" target="_blank" rel="noopener noreferrer">
 
                 <i class="fa-solid fa-location-dot" style="color: #4285F4 !important;"></i><span>Location</span>
 
@@ -505,30 +505,32 @@
 
 
         function handleCall(e) {
-
-            const number = "+919212607636";
-
-            navigator.clipboard.writeText(number).then(() => {
-
-                showToast("Number Copied");
-
-            });
-
-        }
+    e.preventDefault();
+    const number = "+919212607636";
+    if (navigator.clipboard) {
+        navigator.clipboard.writeText(number).then(() => {
+            showToast("Number Copied");
+            setTimeout(()=>window.location.href="tel:"+number,700);
+        }).catch(()=>window.location.href="tel:"+number);
+    } else {
+        window.location.href="tel:"+number;
+    }
+}
 
 
 
         function handleEmail(e) {
-
-            const email = "vaastumahajeevan@gmail.com";
-
-            navigator.clipboard.writeText(email).then(() => {
-
-                showToast("Email Copied");
-
-            });
-
-        }
+    e.preventDefault();
+    const email = "vaastumahajeevan@gmail.com";
+    if (navigator.clipboard) {
+        navigator.clipboard.writeText(email).then(() => {
+            showToast("Email Copied");
+            setTimeout(()=>window.location.href="mailto:"+email,700);
+        }).catch(()=>window.location.href="mailto:"+email);
+    } else {
+        window.location.href="mailto:"+email;
+    }
+}
 
 
 
@@ -546,7 +548,10 @@
 
             link.download = "Dr_Gaurav_Sri_Aggarwal.vcf";
 
+            document.body.appendChild(link);
             link.click();
+            document.body.removeChild(link);
+            URL.revokeObjectURL(url);
 
         }
 
