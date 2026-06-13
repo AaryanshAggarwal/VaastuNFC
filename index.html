@@ -212,9 +212,12 @@
             <a href="https://www.facebook.com/vaastumahajeevan" class="link-item" target="_blank">
                 <i class="fa-brands fa-facebook"></i><span>Facebook</span>
             </a>
+            
+            <!-- FIXED TWITTER ICON: Added strong font-family fallback formatting directly to the tag -->
             <a href="https://twitter.com/vaastumahajeeva" class="link-item" target="_blank">
                 <i class="fa-brands fa-x-twitter" style="font-family: 'Font Awesome 6 Brands' !important;"></i><span>Twitter</span>
             </a>
+            
             <a href="https://www.youtube.com/@VaastuMahajeevan" class="link-item" target="_blank">
                 <i class="fa-brands fa-youtube"></i><span>YouTube</span>
             </a>
@@ -263,18 +266,20 @@
         }
 
         function handleSaveContact() {
-            // vCard payload containing phone numbers, office layouts, and direct app channels
             const vcard = "BEGIN:VCARD\n" +
-                          "VERSION:3.0\n" +
+                          "VERSION:4.0\n" +
                           "FN:Vaastu Guru Dr. Gaurav Sri Aggarwal\n" +
                           "ORG:Vaastu Mahajeevan\n" +
-                          "TEL;TYPE=CELL;TYPE=PREF:+919212607636\n" + 
-                          "ADR;TYPE=WORK:;;B 13;Delhi;Delhi;110092;India\n" +
-                          "EMAIL;TYPE=INTERNET:vaastumahajeevan@gmail.com\n" +
-                          "URL:https://gauravsriaggarwal.com\n" +
+                          "TEL;TYPE=cell,voice,pref:+919212607636\n" + 
+                          "ADR;TYPE=work:;;B 13;Delhi;Delhi;110092;India\n" +
+                          "EMAIL;TYPE=internet,work:vaastumahajeevan@gmail.com\n" +
+                          "URL;TYPE=work:https://gauravsriaggarwal.com\n" +
                           "X-SOCIALPROFILE;TYPE=instagram:https://www.instagram.com/vaastumahajeevan\n" +
                           "X-SOCIALPROFILE;TYPE=facebook:https://www.facebook.com/vaastumahajeevan\n" +
                           "X-SOCIALPROFILE;TYPE=twitter:https://twitter.com/vaastumahajeeva\n" +
+                          "URL;TYPE=Instagram:https://www.instagram.com/vaastumahajeevan\n" +
+                          "URL;TYPE=Facebook:https://www.facebook.com/vaastumahajeevan\n" +
+                          "URL;TYPE=Twitter:https://twitter.com/vaastumahajeeva\n" +
                           "END:VCARD";
                           
             const blob = new Blob([vcard], { type: "text/vcard;charset=utf-8" });
