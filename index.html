@@ -194,15 +194,32 @@
             });
         }
 
-        function handleSaveContact() {
-            const vcard = "BEGIN:VCARD\nVERSION:3.0\nFN:Vaastu Guru Dr. Gaurav Sri Aggarwal\nORG:Vaastu Mahajeevan\nTEL;TYPE=CELL:+919212607636\nADR;TYPE=WORK:;;B 13;Delhi;Delhi;110092;India\nEMAIL:vaastumahajeevan@gmail.com\nURL:https://gauravsriaggarwal.com\nEND:VCARD";
-            const blob = new Blob([vcard], { type: "text/vcard" });
-            const url = window.URL.createObjectURL(blob);
-            const link = document.createElement('a');
-            link.href = url;
-            link.download = "Dr_Gaurav_Sri_Aggarwal.vcf";
-            link.click();
-        }
+       function handleSaveContact() {
+    // Updated VCard configuration with social media integrations
+    const vcard = "BEGIN:VCARD\n" +
+                  "VERSION:3.0\n" +
+                  "FN:Vaastu Guru Dr. Gaurav Sri Aggarwal\n" +
+                  "ORG:Vaastu Mahajeevan\n" +
+                  "TEL;TYPE=CELL;TYPE=PREF:+919212607636\n" + 
+                  "ADR;TYPE=WORK:;;B 13;Delhi;Delhi;110092;India\n" +
+                  "EMAIL;TYPE=INTERNET:vaastumahajeevan@gmail.com\n" +
+                  "URL:https://gauravsriaggarwal.com\n" +
+                  // Added Social Media Handles
+                  "X-SOCIALPROFILE;TYPE=instagram:https://www.instagram.com/vaastumahajeevan\n" +
+                  "X-SOCIALPROFILE;TYPE=facebook:https://www.facebook.com/vaastumahajeevan\n" +
+                  "X-SOCIALPROFILE;TYPE=twitter:https://twitter.com/vaastumahajeeva\n" +
+                  "END:VCARD";
+                  
+    const blob = new Blob([vcard], { type: "text/vcard;charset=utf-8" });
+    const url = window.URL.createObjectURL(blob);
+    const link = document.createElement('a');
+    link.href = url;
+    link.download = "Dr_Gaurav_Sri_Aggarwal.vcf";
+    link.click();
+    
+    // Clean up memory space
+    setTimeout(() => window.URL.revokeObjectURL(url), 100);
+}
     </script>
 </body>
 </html>
