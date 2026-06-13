@@ -163,6 +163,16 @@
         .link-item i { font-size: 1.8rem; margin-bottom: 10px; color: var(--champagne-gold); }
         .link-item span { font-size: 0.85rem; font-weight: 400; }
 
+        /* Custom spacing specifically optimized for the vector block */
+        .twitter-svg-container {
+            width: 1.8rem;
+            height: 1.8rem;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
         /* Icon Brand Colors */
         .fa-youtube { color: #ff0000 !important; }
         .fa-instagram { color: #e1306c !important; }
@@ -213,9 +223,14 @@
                 <i class="fa-brands fa-facebook"></i><span>Facebook</span>
             </a>
             
-            <!-- FIXED TWITTER ICON: Added strong font-family fallback formatting directly to the tag -->
+            <!-- REPLACED ICON WITH BUILT-IN SVG: This guarantees rendering with zero external library issues -->
             <a href="https://twitter.com/vaastumahajeeva" class="link-item" target="_blank">
-                <i class="fa-brands fa-x-twitter" style="font-family: 'Font Awesome 6 Brands' !important;"></i><span>Twitter</span>
+                <div class="twitter-svg-container">
+                    <svg viewBox="0 0 24 24" width="100%" height="100%" fill="var(--champagne-gold)">
+                        <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"></path>
+                    </svg>
+                </div>
+                <span>Twitter</span>
             </a>
             
             <a href="https://www.youtube.com/@VaastuMahajeevan" class="link-item" target="_blank">
